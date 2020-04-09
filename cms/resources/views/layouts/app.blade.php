@@ -102,7 +102,7 @@
 
                             <li class="list-group-item">
 
-                                <a href="">categories</a>
+                                <a href="{{ route('categories.index') }}">categories</a>
 
                             </li>
 
