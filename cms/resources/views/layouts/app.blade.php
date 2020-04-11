@@ -96,7 +96,7 @@
 
                             <li class="list-group-item">
 
-                                <a href="">posts</a>
+                                <a href="{{ route('posts.index') }}">Posts</a>
 
                             </li>
 
