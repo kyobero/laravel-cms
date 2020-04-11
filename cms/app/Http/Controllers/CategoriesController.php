@@ -85,10 +85,12 @@ class CategoriesController extends Controller
      */
     public function update(UpdateCategoriesRequest $request, category $category)
     {
-        $category->name = $request->name;
+        // $category->name = $request->name;
+        $category->update([
+            
+            'name'=> $request->name 
+        ]);
 
-
-        $category->save();
 
         session()->flash('success', 'Category updated successfully');
 
