@@ -13,8 +13,53 @@
 
     <div class="card-header">Posts</div>
 
+
     <div class="card-body">
 
+        <table class="table">
+
+        <thead>
+
+            <th>Image</th>
+
+            <th>Title</th>
+
+        </thead>
+
+        <tbody>
+
+            @foreach($posts as $post)
+
+            <tr>
+            
+                <td>
+                    
+                   <!--<img src="{{ $post->image }}"  alt=""> -->
+                   <!-- {{ $post->image }}  -->
+
+                   <!-- <img src="{{ Storage::url("/app/public/{$post->image}") }}" alt="" /> -->
+
+                   <!-- <img src="{{ public_path('cms\public\storage\posts\blQWfZ6VyCsjUFte5bsRLaWpSzl6cvpihhSNHxTV.png')}}" alt="" /> -->
+
+                   <img src="/storage/{{$post->image}}"/>
+                   <!-- http://127.0.0.1:8000/storage/posts/blQWfZ6VyCsjUFte5bsRLaWpSzl6cvpihhSNHxTV.png -->
+                  
+
+                </td>
+
+                <td>
+                    
+                    {{ $post->title }}
+
+                </td>
+
+            </tr>
+
+            @endforeach
+
+        </tbody>
+
+        </table>
 
     </div>
 

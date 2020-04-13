@@ -12,7 +12,30 @@
 
     <div class="card-body">
 
-        <form action=" {{ route('posts.store') }}" method="POST">
+    @if($errors->any())
+
+<div class="alert alert-danger">
+
+    <ul class="list-group">
+
+     @foreach($errors->all() as $error)
+
+        <li class="list-group-item text-danger">
+
+            {{ $error }}
+
+        </li>
+
+        @endforeach
+    
+    </ul>
+
+</div>
+
+@endif
+
+
+        <form action=" {{ route ('posts.store') }}" method="POST" enctype="multipart/form-data">
 
         @csrf
 
@@ -44,7 +67,7 @@
 
                 <label for="published_at">Published At</label>
 
-                <input type="text" class="form-control" name="published_at" id="published_at">
+                <input type="text" class="form-control" name="published_at" id='published_at'>
 
             </div>
 
@@ -52,9 +75,19 @@
 
                 <label for="image">Image</label>
 
-                <input type="file" class="form-control" name="image" id="image">
+                <input type="file" class="form-control" name="image" id='image'>
 
             </div>
+
+            <div class="form-group">
+
+                <button type="submit" class="btn btn-success">
+
+                Create Post
+
+                </button>
+
+            </div>            
 
         </form>
 
