@@ -58,12 +58,14 @@
 
                 </td>
 
+                @if(!$post->trashed())
                 <td>
 
-                    <a href="" class="btn btn-info btn-sm">Edit</a>
+                <a href="" class="btn btn-info btn-sm">Edit</a>
 
                 </td>
-
+                @endif
+                
                 <td>
 
                 <form action="{{ route ('posts.destroy', $post->id) }}" method="POST">
