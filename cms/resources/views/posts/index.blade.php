@@ -24,7 +24,11 @@
 
             <th>Title</th>
 
+            <th></th>
+
         </thead>
+
+
 
         <tbody>
 
@@ -41,7 +45,8 @@
 
                    <!-- <img src="{{ public_path('cms\public\storage\posts\blQWfZ6VyCsjUFte5bsRLaWpSzl6cvpihhSNHxTV.png')}}" alt="" /> -->
 
-                   <img src="/storage/{{$post->image}}"/>
+                   <img src="/storage/{{ $post->image }}" width="60px" height="60px"/>
+
                    <!-- http://127.0.0.1:8000/storage/posts/blQWfZ6VyCsjUFte5bsRLaWpSzl6cvpihhSNHxTV.png -->
                   
 
@@ -51,6 +56,26 @@
                     
                     {{ $post->title }}
 
+                </td>
+
+                <td>
+
+                    <a href="" class="btn btn-info btn-sm">Edit</a>
+
+                </td>
+
+                <td>
+
+                <form action="{{ route ('posts.destroy', $post->id) }}" method="POST">
+
+                @csrf
+                
+                @method('DELETE')
+
+                <button type="submit" class="btn btn-danger btn-sm">Trash</button>
+
+                </form>
+                
                 </td>
 
             </tr>
