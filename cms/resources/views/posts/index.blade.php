@@ -15,81 +15,86 @@
 
 
     <div class="card-body">
+        @if($posts->count() > 0)
+            <table class="table">
 
-        <table class="table">
+                <thead>
 
-        <thead>
+                    <th>Image</th>
 
-            <th>Image</th>
+                    <th>Title</th>
 
-            <th>Title</th>
+                    <th></th>
 
-            <th></th>
-
-        </thead>
+                </thead>
 
 
 
-        <tbody>
+                <tbody>
 
-            @foreach($posts as $post)
+                    @foreach($posts as $post)
 
-            <tr>
-            
-                <td>
+                    <tr>
                     
-                   <!--<img src="{{ $post->image }}"  alt=""> -->
-                   <!-- {{ $post->image }}  -->
+                        <td>
+                            
+                        <!--<img src="{{ $post->image }}"  alt=""> -->
+                        <!-- {{ $post->image }}  -->
 
-                   <!-- <img src="{{ Storage::url("/app/public/{$post->image}") }}" alt="" /> -->
+                        <!-- <img src="{{ Storage::url("/app/public/{$post->image}") }}" alt="" /> -->
 
-                   <!-- <img src="{{ public_path('cms\public\storage\posts\blQWfZ6VyCsjUFte5bsRLaWpSzl6cvpihhSNHxTV.png')}}" alt="" /> -->
+                        <!-- <img src="{{ public_path('cms\public\storage\posts\blQWfZ6VyCsjUFte5bsRLaWpSzl6cvpihhSNHxTV.png')}}" alt="" /> -->
 
-                   <img src="/storage/{{ $post->image }}" width="60px" height="60px"/>
+                        <img src="/storage/{{ $post->image }}" width="60px" height="60px"/>
 
-                   <!-- http://127.0.0.1:8000/storage/posts/blQWfZ6VyCsjUFte5bsRLaWpSzl6cvpihhSNHxTV.png -->
-                  
+                        <!-- http://127.0.0.1:8000/storage/posts/blQWfZ6VyCsjUFte5bsRLaWpSzl6cvpihhSNHxTV.png -->
+                        
 
-                </td>
+                        </td>
 
-                <td>
-                    
-                    {{ $post->title }}
+                        <td>
+                            
+                            {{ $post->title }}
 
-                </td>
+                        </td>
 
-                @if(!$post->trashed())
-                <td>
+                        @if(!$post->trashed())
+                        <td>
 
-                <a href="" class="btn btn-info btn-sm">Edit</a>
+                        <a href="" class="btn btn-info btn-sm">Edit</a>
 
-                </td>
-                @endif
+                        </td>
+                        @endif
 
-                <td>
+                        <td>
 
-                <form action="{{ route ('posts.destroy', $post->id) }}" method="POST">
+                        <form action="{{ route ('posts.destroy', $post->id) }}" method="POST">
 
-                @csrf
+                        @csrf
+                        
+                        @method('DELETE')
+
+                        <button type="submit" class="btn btn-danger btn-sm">
+                        {{ $post->trashed() ? 'Delete': 'Trash' }}
                 
-                @method('DELETE')
+                        </button>
 
-                <button type="submit" class="btn btn-danger btn-sm">
-                {{ $post->trashed() ? 'Delete': 'Trash' }}
-        
-                </button>
+                        </form>
+                        
+                        </td>
 
-                </form>
-                
-                </td>
+                    </tr>
 
-            </tr>
+                    @endforeach
 
-            @endforeach
+                </tbody>
 
-        </tbody>
+            </table>
+        @else
 
-        </table>
+        <h3 class="text-center"> No posts yet</h3>
+
+        @endif
 
     </div>
 
