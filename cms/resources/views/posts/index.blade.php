@@ -65,7 +65,7 @@
 
                 </td>
                 @endif
-                
+
                 <td>
 
                 <form action="{{ route ('posts.destroy', $post->id) }}" method="POST">
@@ -74,7 +74,10 @@
                 
                 @method('DELETE')
 
-                <button type="submit" class="btn btn-danger btn-sm">Trash</button>
+                <button type="submit" class="btn btn-danger btn-sm">
+                {{ $post->trashed() ? 'Delete': 'Trash' }}
+        
+                </button>
 
                 </form>
                 
