@@ -10,6 +10,8 @@ use App\Http\Requests\Posts\UpdatePostRequest;
 
 use App\Post;
 
+use App\category;
+
 class PostsController extends Controller
 {
     /**
@@ -29,7 +31,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        return view('posts.create')->with('categories', Category::all());
     }
 
     /**
@@ -46,11 +48,18 @@ class PostsController extends Controller
 
         //create the post
         Post::create([
+
             'title' => $request->title,
+
             'description' => $request->description,
+
             'content' => $request->content,
+
             'image' => $image,
-            'published_at' => $request->published_at
+
+            'published_at' => $request->published_at,
+
+            'category_id' => $request->category
         ]);
 
         //flash message
@@ -81,7 +90,7 @@ class PostsController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('posts.create')->with('post', $post);
+        return view('posts.create')->with('post', $post)->with('categories', Category::all());
     }
 
     /**

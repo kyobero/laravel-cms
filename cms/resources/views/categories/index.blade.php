@@ -16,11 +16,15 @@
 
         <div class="card-body">
 
+            @if($categories->count() > 0)
+
             <table class="table">
 
                 <thead>
 
                     <th> Name</th>
+
+                    <th>Posts count</th>
 
                     <th></th>
 
@@ -36,6 +40,12 @@
                         <td>
 
                         {{ $category->name }}
+
+                        </td>
+
+                        <td>
+
+                            {{ $category->posts->count() }}
 
                         </td>
 
@@ -96,6 +106,12 @@
 
 
         </div>
+
+            @else
+
+            <h3 class="text-center"> No categories yet</h3>
+
+            @endif
 
     </div>
 
