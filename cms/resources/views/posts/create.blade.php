@@ -12,28 +12,29 @@
 
     <div class="card-body">
 
-    @if($errors->any())
+                <!-- @if($errors->any())
 
-<div class="alert alert-danger">
+            <div class="alert alert-danger">
 
-    <ul class="list-group">
+                <ul class="list-group">
 
-     @foreach($errors->all() as $error)
+                @foreach($errors->all() as $error)
 
-        <li class="list-group-item text-danger">
+                    <li class="list-group-item text-danger">
 
-            {{ $error }}
+                        {{ $error }}
 
-        </li>
+                    </li>
 
-        @endforeach
-    
-    </ul>
+                    @endforeach
+                
+                </ul>
 
-</div>
+            </div>
 
-@endif
+            @endif -->
 
+            @include('partials.errors')
 
         <form action="{{ isset($post) ? route('posts.update', $post->id) : route('posts.store') }}" method="POST" enctype="multipart/form-data">
 
