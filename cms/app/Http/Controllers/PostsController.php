@@ -8,6 +8,16 @@ use App\Http\Requests\Posts\CreatePostsRequest;
 
 use App\Http\Requests\Posts\UpdatePostRequest;
 
+// use Illuminate\Support\Facades\Auth;
+
+// // Get the currently authenticated user...
+
+// $user = Auth::user();
+
+// // Get the currently authenticated user's ID...
+
+// $id = Auth::id();
+
 use App\Post;
 
 use App\Tag;
@@ -68,7 +78,9 @@ class PostsController extends Controller
 
             'published_at' => $request->published_at,
 
-            'category_id' => $request->category
+            'category_id' => $request->category,
+            
+            'user_id' => auth()->user()->id
         ]);
 
         if ($request->tags) {
