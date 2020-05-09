@@ -70,10 +70,11 @@ TheSaaS Blog
               </div>
 
 
-              <nav class="flexbox mt-30">
+              <!-- <nav class="flexbox mt-30">
                 <a class="btn btn-white disabled"><i class="ti-arrow-left fs-9 mr-4"></i> Newer</a>
                 <a class="btn btn-white" href="#">Older <i class="ti-arrow-right fs-9 ml-4"></i></a>
-              </nav>
+              </nav> -->
+              {{ $posts->links() }}
             </div>
 
 
@@ -110,7 +111,9 @@ TheSaaS Blog
 
                 </div>
 
-                <!-- <hr>
+                <hr>
+
+                <!-- 
 
                 <h6 class="sidebar-title">Top posts</h6>
                 <a class="media text-default align-items-center mb-5" href="blog-single.html">
